@@ -35,8 +35,20 @@ export const setAutor= async(req,res)=>{
     }
 }
 
-export const updateAutor=(req,res)=>{
-    res.send("actualizando usuarios")
+export const updateAutor=async(req,res)=>{
+    try {
+        //res.send("actualizando usuarios")
+        const {id}=req.params
+        const {name,pais}=req.body
+        const autor=await Autores.findByPk(id)
+        autor.name=name
+        autor.pais=pais
+        await autor.save()
+        res.json(autor)
+    } catch (error) {
+        console.error('Error al actualizar autor', error);
+        res.status(500).json({ error: 'Error al autor' }); 
+    }
 }
 
 export const deleteAutor=async(req,res)=>{
