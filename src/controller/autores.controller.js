@@ -1,4 +1,4 @@
-import { Autores } from "../models/autores.js";
+import { Autores } from "../models/Autores.js";
 
 export const getAllAutor=async(req,res)=>{
 
@@ -79,12 +79,8 @@ export const getAutor=async(req,res)=>{
 
     const {id}=req.params
 
-    const data=await Autores.findOne({
-        where:{
-            id,
-        }
-    })
+    const data=await Autores.findByPk(id)
 
-    res.send("usuario encontrado")
+    res.json(data)
 
 }

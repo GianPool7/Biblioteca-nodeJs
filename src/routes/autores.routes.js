@@ -6,7 +6,7 @@ const router=express.Router()
 
 router.get('/autor',getAllAutor)
 router.post('/autor',setAutor)
-router.put('/autor/:id',updateAutor)
+router.patch('/autor/:id',updateAutor)
 router.delete('/autor/:id',deleteAutor)
 router.get('/autor/:id',getAutor)
 
